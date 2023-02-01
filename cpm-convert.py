@@ -37,5 +37,6 @@ def write_versions_to_cpm_file(template_path, output_path):
 
 for file_path in glob.glob(path + '\\**\\*.csproj', recursive=True):
   read_versions_from_csproj_files(file_path)
-  write_versions_to_cpm_file(template_path, cpm_output_file)
   delete_versions_from_csproj_files(file_path)
+
+write_versions_to_cpm_file(template_path, cpm_output_file)
