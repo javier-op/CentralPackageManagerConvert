@@ -7,7 +7,7 @@ template_path = 'template.xml'              # path to the template.xml, file inc
 cpm_output_file = 'Directory.Package.Props' # path where the Directory.Package.Props file will be created
 package_versions = {}
 
-def read_versions_from_csproj_files(file_path):
+def read_versions_from_csproj_file(file_path):
   tree = ET.parse(file_path)
   root = tree.getroot()
   for item_group in root.findall('ItemGroup'):
@@ -17,7 +17,7 @@ def read_versions_from_csproj_files(file_path):
 def get_highest_version(saved_version, read_version):
   return read_version if packaging.version.parse(read_version) > packaging.version.parse(saved_version) else saved_version
 
-def delete_versions_from_csproj_files(file_path):
+def delete_versions_from_csproj_file(file_path):
   tree = ET.parse(file_path)
   root = tree.getroot()
   for item_group in root.findall('ItemGroup'):
@@ -36,7 +36,7 @@ def write_versions_to_cpm_file(template_path, output_path):
   tree.write(output_path)
 
 for file_path in glob.glob(path + '\\**\\*.csproj', recursive=True):
-  read_versions_from_csproj_files(file_path)
-  delete_versions_from_csproj_files(file_path)
+  read_versions_from_csproj_file(file_path)
+  delete_versions_from_csproj_file(file_path)
 
 write_versions_to_cpm_file(template_path, cpm_output_file)
