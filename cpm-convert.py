@@ -2,9 +2,9 @@ import glob
 from pkg_resources import packaging
 import xml.etree.ElementTree as ET
 
-path = '{path to your solution folder}'     # the root of your project
-template_path = 'template.xml'              # path to the template.xml, file included or make your own
-cpm_output_file = 'Directory.Package.Props' # path where the Directory.Package.Props file will be created
+path = ''                                    # the root of your project
+template_path = 'template.xml'               # path to the template.xml, file included or make your own
+cpm_output_file = 'Directory.Packages.Props' # path where the Directory.Packages.Props file will be created
 package_versions = {}
 
 def read_versions_from_csproj_file(file_path):
